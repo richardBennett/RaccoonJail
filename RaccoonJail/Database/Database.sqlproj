@@ -56,5 +56,18 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Schemas" />
+    <Folder Include="Tables" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="localhost.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Schemas\Jail.sql" />
+    <Build Include="Schemas\Info.sql" />
+    <Build Include="Tables\Jail_Inmate.sql" />
+    <Build Include="Tables\Info_HappinessLevel.sql" />
+    <Build Include="Tables\Info_HungerLevel.sql" />
+    <Build Include="Tables\Info_ArrestLocation.sql" />
   </ItemGroup>
 </Project>
