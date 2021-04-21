@@ -58,9 +58,13 @@
     <Folder Include="Properties" />
     <Folder Include="Schemas" />
     <Folder Include="Tables" />
+    <Folder Include="PostDeploy" />
   </ItemGroup>
   <ItemGroup>
     <None Include="localhost.publish.xml" />
+    <None Include="PostDeploy\PopulateInfoArrestLocation.sql" />
+    <None Include="PostDeploy\PopulateInfoHappinessLevel.sql" />
+    <None Include="PostDeploy\PopulateInfoHungerLevel.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\Jail.sql" />
@@ -69,5 +73,8 @@
     <Build Include="Tables\Info_HappinessLevel.sql" />
     <Build Include="Tables\Info_HungerLevel.sql" />
     <Build Include="Tables\Info_ArrestLocation.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PostDeploy\Script.PostDeployment.sql" />
   </ItemGroup>
 </Project>
