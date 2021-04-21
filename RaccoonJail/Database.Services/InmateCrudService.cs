@@ -56,6 +56,11 @@ namespace Data.Services
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == inmateId);
 
+            if (inmate == null)
+            {
+                throw new InmateCrudException($"Inmate with Id {inmateId} could not be read because it was not found.");
+            }
+
             return new InmateDto
             {
                 ArrestLocation = (ArrestLocation)inmate.ArrestLocationId,
@@ -72,6 +77,11 @@ namespace Data.Services
             var inmate = await _dbContext.Inmates
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == inmateId);
+
+            if (inmate == null)
+            {
+                throw new InmateCrudException($"Inmate with Id {inmateId} could not be updated because it was not found.");
+            }
 
             inmate.HungerLevelId = (int)hungerLevel;
             await _dbContext.SaveChangesAsync();
