@@ -79,6 +79,7 @@ namespace Data.Services
             inmate.HungerLevelId = inmateUpdateRequest.HungerLevel != null ? (int)inmateUpdateRequest.HungerLevel.Value : inmate.HungerLevelId;
             inmate.ArrestLocationId = inmateUpdateRequest.ArrestLocation != null ? (int)inmateUpdateRequest.ArrestLocation.Value : inmate.ArrestLocationId;
 
+            _dbContext.Update(inmate);
             await _dbContext.SaveChangesAsync();
         }
 

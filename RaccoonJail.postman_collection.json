@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "47698e24-d536-4380-93c3-4363f8735766",
+		"name": "RaccoonJail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetInmate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "AddInmate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/InmateCrud/AddInmate?name=hello",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"InmateCrud",
+						"AddInmate"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "hello"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateInmate",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ArrestLocation\": 4,\r\n    \"HappinessLevel\": null,\r\n    \"HungerLevel\": null,\r\n    \"Id\": 1,\r\n    \"Name\": null,\r\n    \"Size\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/InmateCrud/UpdateInmate",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"InmateCrud",
+						"UpdateInmate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
