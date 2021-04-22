@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [Info].[HungerLevel]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
-    [Description] NCHAR(100) NOT NULL
+	[Id] INT NOT NULL, 
+    [Description] NCHAR(100) NOT NULL,
+	CONSTRAINT [PK_Info_HungerLevel] PRIMARY KEY CLUSTERED ([Id] ASC),
 )

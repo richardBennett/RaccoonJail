@@ -1,5 +1,6 @@
 ﻿CREATE TABLE [Info].[ArrestLocation]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
-    [Location] NCHAR(100) NOT NULL
+	[Id] INT NOT NULL, 
+    [Location] NCHAR(100) NOT NULL,
+	CONSTRAINT [PK_Info_ArrestLocation] PRIMARY KEY CLUSTERED ([Id] ASC),
 )
