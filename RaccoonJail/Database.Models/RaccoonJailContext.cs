@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
@@ -73,14 +75,30 @@ namespace Database.Models
             {
                 entity.ToTable("Inmate", "Jail");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(100)
                     .IsFixedLength(true);
 
                 entity.Property(e => e.Size).HasColumnType("decimal(9, 6)");
+
+                entity.HasOne(d => d.ArrestLocation)
+                    .WithMany(p => p.Inmates)
+                    .HasForeignKey(d => d.ArrestLocationId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Jail_Inmate_Info_ArrestLocation");
+
+                entity.HasOne(d => d.HappinessLevel)
+                    .WithMany(p => p.Inmates)
+                    .HasForeignKey(d => d.HappinessLevelId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Jail_Inmate_Info_HappinessLevel");
+
+                entity.HasOne(d => d.HungerLevel)
+                    .WithMany(p => p.Inmates)
+                    .HasForeignKey(d => d.HungerLevelId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Jail_Inmate_Info_HungerLevel");
             });
 
             OnModelCreatingPartial(modelBuilder);
