@@ -3,10 +3,11 @@ using Data.Services.Exceptions;
 using Data.Services.Interfaces;
 using Database.Models;
 using Microsoft.EntityFrameworkCore;
-using Models;
-using ArrestLocation = Models.Enums.ArrestLocation;
-using HappinessLevel = Models.Enums.HappinessLevel;
-using HungerLevel = Models.Enums.HungerLevel;
+using Models.Dtos;
+using Models.Requests;
+using ArrestLocation = Models.ArrestLocation;
+using HappinessLevel = Models.HappinessLevel;
+using HungerLevel = Models.HungerLevel;
 
 namespace Data.Services
 {
@@ -37,9 +38,7 @@ namespace Data.Services
 
         public async Task DeleteInmate(long inmateId)
         {
-            var inmate = await _dbContext.Inmates
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.Id == inmateId);
+            var inmate = await GetInmate(inmateId);
 
             if (inmate == null)
             {
@@ -52,9 +51,7 @@ namespace Data.Services
 
         public async Task<InmateDto> ReadInmate(long inmateId)
         {
-            var inmate = await _dbContext.Inmates
-                .AsNoTracking()
-                .FirstOrDefaultAsync(x => x.Id == inmateId);
+            var inmate = await GetInmate(inmateId);
 
             if (inmate == null)
             {
@@ -72,19 +69,24 @@ namespace Data.Services
             };
         }
 
-        public async Task UpdateInmateHungerLevel(long inmateId, HungerLevel hungerLevel)
+        public async Task UpdateInmate(InmateUpdateRequest inmateUpdateRequest)
         {
-            var inmate = await _dbContext.Inmates
+            var inmate = await GetInmate(inmateUpdateRequest.Id);
+
+            inmate.Name = inmateUpdateRequest.Name ?? inmate.Name;
+            inmate.Size = inmateUpdateRequest.Size ?? inmate.Size;
+            inmate.HappinessLevelId = inmateUpdateRequest.HappinessLevel != null ? (int)inmateUpdateRequest.HappinessLevel.Value : inmate.HappinessLevelId;
+            inmate.HungerLevelId = inmateUpdateRequest.HungerLevel != null ? (int)inmateUpdateRequest.HungerLevel.Value : inmate.HungerLevelId;
+            inmate.ArrestLocationId = inmateUpdateRequest.ArrestLocation != null ? (int)inmateUpdateRequest.ArrestLocation.Value : inmate.ArrestLocationId;
+
+            await _dbContext.SaveChangesAsync();
+        }
+
+        private async Task<Inmate> GetInmate(long inmateId)
+        {
+            return await _dbContext.Inmates
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == inmateId);
-
-            if (inmate == null)
-            {
-                throw new InmateCrudException($"Inmate with Id {inmateId} could not be updated because it was not found.");
-            }
-
-            inmate.HungerLevelId = (int)hungerLevel;
-            await _dbContext.SaveChangesAsync();
         }
     }
 }

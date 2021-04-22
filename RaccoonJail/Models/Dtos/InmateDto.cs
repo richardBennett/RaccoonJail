@@ -1,6 +1,4 @@
-﻿using Models.Enums;
-
-namespace Models
+﻿namespace Models.Dtos
 {
     public class InmateDto
     {
@@ -9,6 +7,6 @@ namespace Models
         public HungerLevel HungerLevel { get; set; }
         public long Id { get; set; }
         public string Name { get; set; }
-        public decimal? Size { get; set; }
+        public decimal Size { get; set; }
     }
 }

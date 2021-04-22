@@ -9,7 +9,7 @@ namespace Database.Models
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public decimal? Size { get; set; }
+        public decimal Size { get; set; }
         public int TimeServed { get; set; }
         public int ArrestLocationId { get; set; }
         public int HappinessLevelId { get; set; }

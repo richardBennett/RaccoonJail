@@ -2,7 +2,8 @@
 using Data.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Models;
-using Models.Enums;
+using Models.Dtos;
+using Models.Requests;
 
 namespace Api.Controllers
 {
@@ -16,16 +17,23 @@ namespace Api.Controllers
             _inmateCrudService = inmateCrudService;
         }
 
+        [HttpPost("AddInmate")]
+        public async Task<ActionResult<long>> AddInmate(string name, decimal size, ArrestLocation arrestLocation, HungerLevel hungerLevel, HappinessLevel happinessLevel)
+        {
+            return await _inmateCrudService.AddInmateAndReturnId(name, size, arrestLocation, hungerLevel, happinessLevel);
+        }
+
         [HttpGet("GetInmate/{inmateId}")]
         public async Task<ActionResult<InmateDto>> GetInmate(long inmateId)
         {
             return await _inmateCrudService.ReadInmate(inmateId);
         }
 
-        [HttpPost("AddInmate")]
-        public async Task<ActionResult<long>> AddInmate(string name, decimal size, ArrestLocation arrestLocation, HungerLevel hungerLevel, HappinessLevel happinessLevel)
+        [HttpPatch("UpdateInmate")]
+        public async Task<ActionResult> GetInmate([FromBody] InmateUpdateRequest inmateUpdateRequest)
         {
-            return await _inmateCrudService.AddInmateAndReturnId(name, size, arrestLocation, hungerLevel, happinessLevel);
+            await _inmateCrudService.UpdateInmate(inmateUpdateRequest);
+            return Ok();
         }
     }
 }

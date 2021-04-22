@@ -2,7 +2,7 @@
 (
 	[Id] BIGINT NOT NULL IDENTITY(1,1), 
     [Name] NCHAR(100) NOT NULL, 
-    [Size] DECIMAL(9, 6) NULL,
+    [Size] DECIMAL(9, 6) NOT NULL,
     [TimeServed] INT NOT NULL,
     [ArrestLocationId] INT NOT NULL,
     [HappinessLevelId] INT NOT NULL, 

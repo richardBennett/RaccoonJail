@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Models;
-using Models.Enums;
+using Models.Dtos;
+using Models.Requests;
 
 namespace Data.Services.Interfaces
 {
@@ -9,6 +10,6 @@ namespace Data.Services.Interfaces
         Task<long> AddInmateAndReturnId(string name, decimal size, ArrestLocation arrestLocation, HungerLevel hungerLevel, HappinessLevel happinessLevel);
         Task DeleteInmate(long inmateId);
         Task<InmateDto> ReadInmate(long inmateId);
-        Task UpdateInmateHungerLevel(long inmateId, HungerLevel hungerLevel);
+        Task UpdateInmate(InmateUpdateRequest inmateUpdateRequest);
     }
 }
