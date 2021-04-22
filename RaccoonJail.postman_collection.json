@@ -20,7 +20,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/InmateCrud/AddInmate?name=hello",
+					"raw": "https://localhost:5001/api/InmateCrud/AddInmate?name=Dan Fields&size=200.0&arrestLocation=1&hungerLevel=1&happinessLevel=1",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -34,7 +34,23 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "hello"
+							"value": "Dan Fields"
+						},
+						{
+							"key": "size",
+							"value": "200.0"
+						},
+						{
+							"key": "arrestLocation",
+							"value": "1"
+						},
+						{
+							"key": "hungerLevel",
+							"value": "1"
+						},
+						{
+							"key": "happinessLevel",
+							"value": "1"
 						}
 					]
 				}
@@ -68,6 +84,15 @@
 						"UpdateInmate"
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteInmate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
 			},
 			"response": []
 		}

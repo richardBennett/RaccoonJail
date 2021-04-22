@@ -25,7 +25,7 @@ namespace Api.Controllers
             return await _inmateCrudService.AddInmateAndReturnId(name, size, arrestLocation, hungerLevel, happinessLevel);
         }
 
-        [HttpGet("GetInmate/{inmateId}")]
+        [HttpGet("GetInmate/{inmateId:long}")]
         public async Task<ActionResult<InmateDto>> GetInmate(long inmateId)
         {
             return await _inmateCrudService.ReadInmate(inmateId);
@@ -35,6 +35,13 @@ namespace Api.Controllers
         public async Task<ActionResult> GetInmate([FromBody] InmateUpdateRequest inmateUpdateRequest)
         {
             await _inmateCrudService.UpdateInmate(inmateUpdateRequest);
+            return Ok();
+        }
+
+        [HttpDelete("DeleteInmate/{inmateId:long}")]
+        public async Task<ActionResult> DeleteInmate(long inmateId)
+        {
+            await _inmateCrudService.DeleteInmate(inmateId);
             return Ok();
         }
     }
