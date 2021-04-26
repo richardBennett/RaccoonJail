@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{002CFAA1-98AE-4432-AB52-535089305D13}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4E248D90-D141-4EC9-AC84-0524C3BCE70D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests.Api", "IntegrationTests.Api\IntegrationTests.Api.csproj", "{33119199-92FD-4312-B842-929DE5D6FD4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,9 +45,16 @@ Global
 		{002CFAA1-98AE-4432-AB52-535089305D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{002CFAA1-98AE-4432-AB52-535089305D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{002CFAA1-98AE-4432-AB52-535089305D13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33119199-92FD-4312-B842-929DE5D6FD4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33119199-92FD-4312-B842-929DE5D6FD4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33119199-92FD-4312-B842-929DE5D6FD4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33119199-92FD-4312-B842-929DE5D6FD4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{33119199-92FD-4312-B842-929DE5D6FD4D} = {4E248D90-D141-4EC9-AC84-0524C3BCE70D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA1596D7-69BA-4DA8-8DA0-75F9515A1975}
