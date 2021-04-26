@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Data.Services.Exceptions;
-using Data.Services.Interfaces;
 using Database.Models;
+using Database.Services.Exceptions;
+using Database.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Models.Dtos;
 using Models.Requests;
@@ -9,7 +9,7 @@ using ArrestLocation = Models.ArrestLocation;
 using HappinessLevel = Models.HappinessLevel;
 using HungerLevel = Models.HungerLevel;
 
-namespace Data.Services
+namespace Database.Services
 {
     public class InmateCrudService : IInmateCrudService
     {
@@ -20,15 +20,16 @@ namespace Data.Services
             _dbContext = dbContext;
         }
 
-        public async Task<long> AddInmateAndReturnId(string name, decimal size, ArrestLocation arrestLocation, HungerLevel hungerLevel, HappinessLevel happinessLevel)
+        public async Task<long> AddInmateAndReturnId(string name, decimal sizeInOz, ArrestLocation arrestLocationId, HungerLevel hungerLevelId, HappinessLevel happinessLevelId)
         {
             var inmate = await _dbContext.Inmates.AddAsync(new Inmate
             {
-                ArrestLocationId = (int)arrestLocation,
-                HappinessLevelId = (int)happinessLevel,
-                HungerLevelId = (int)hungerLevel,
+                ArrestLocationId = (int)arrestLocationId,
+                HappinessLevelId = (int)happinessLevelId,
+                HungerLevelId = (int)hungerLevelId,
                 Name = name,
-                Size = size
+                SizeInOz = sizeInOz,
+                TimeServedInMonths = 0
             });
 
             await _dbContext.SaveChangesAsync();
@@ -51,7 +52,12 @@ namespace Data.Services
 
         public async Task<InmateDto> ReadInmate(long inmateId)
         {
-            var inmate = await GetInmate(inmateId);
+            var inmate = await _dbContext.Inmates
+                .AsNoTracking()
+                .Include(x => x.ArrestLocation)
+                .Include(x => x.HungerLevel)
+                .Include(x => x.HappinessLevel)
+                .FirstOrDefaultAsync(x => x.Id == inmateId);
 
             if (inmate == null)
             {
@@ -60,12 +66,13 @@ namespace Data.Services
 
             return new InmateDto
             {
-                ArrestLocation = (ArrestLocation)inmate.ArrestLocationId,
-                HappinessLevel = (HappinessLevel)inmate.HappinessLevelId,
-                HungerLevel = (HungerLevel)inmate.HungerLevelId,
+                ArrestLocation = inmate.ArrestLocation.Location,
+                HappinessLevel = inmate.HappinessLevel.Description,
+                HungerLevel = inmate.HungerLevel.Description,
                 Id = inmate.Id,
                 Name = inmate.Name,
-                Size = inmate.Size
+                SizeInOz = inmate.SizeInOz,
+                TimeServedInMonths = inmate.TimeServedInMonths
             };
         }
 
@@ -74,10 +81,11 @@ namespace Data.Services
             var inmate = await GetInmate(inmateUpdateRequest.Id);
 
             inmate.Name = inmateUpdateRequest.Name ?? inmate.Name;
-            inmate.Size = inmateUpdateRequest.Size ?? inmate.Size;
+            inmate.SizeInOz = inmateUpdateRequest.SizeInOz ?? inmate.SizeInOz;
             inmate.HappinessLevelId = inmateUpdateRequest.HappinessLevel != null ? (int)inmateUpdateRequest.HappinessLevel.Value : inmate.HappinessLevelId;
             inmate.HungerLevelId = inmateUpdateRequest.HungerLevel != null ? (int)inmateUpdateRequest.HungerLevel.Value : inmate.HungerLevelId;
             inmate.ArrestLocationId = inmateUpdateRequest.ArrestLocation != null ? (int)inmateUpdateRequest.ArrestLocation.Value : inmate.ArrestLocationId;
+            inmate.TimeServedInMonths = inmateUpdateRequest.TimeServedInMonths ?? inmate.TimeServedInMonths;
 
             _dbContext.Update(inmate);
             await _dbContext.SaveChangesAsync();

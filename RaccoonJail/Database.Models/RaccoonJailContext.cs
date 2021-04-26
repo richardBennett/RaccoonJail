@@ -80,7 +80,7 @@ namespace Database.Models
                     .HasMaxLength(100)
                     .IsFixedLength(true);
 
-                entity.Property(e => e.Size).HasColumnType("decimal(9, 6)");
+                entity.Property(e => e.SizeInOz).HasColumnType("decimal(9, 6)");
 
                 entity.HasOne(d => d.ArrestLocation)
                     .WithMany(p => p.Inmates)

@@ -3,7 +3,7 @@ using Models;
 using Models.Dtos;
 using Models.Requests;
 
-namespace Data.Services.Interfaces
+namespace Database.Services.Interfaces
 {
     public interface IInmateCrudService
     {

@@ -7,6 +7,7 @@
         public HungerLevel? HungerLevel { get; set; }
         public long Id { get; set; }
         public string Name { get; set; }
-        public decimal? Size { get; set; }
+        public decimal? SizeInOz { get; set; }
+        public int? TimeServedInMonths { get; set; }
     }
 }

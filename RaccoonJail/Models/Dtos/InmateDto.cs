@@ -2,11 +2,12 @@
 {
     public class InmateDto
     {
-        public ArrestLocation ArrestLocation { get; set; }
-        public HappinessLevel HappinessLevel { get; set; }
-        public HungerLevel HungerLevel { get; set; }
+        public string ArrestLocation { get; set; }
+        public string HappinessLevel { get; set; }
+        public string HungerLevel { get; set; }
         public long Id { get; set; }
         public string Name { get; set; }
-        public decimal Size { get; set; }
+        public decimal SizeInOz { get; set; }
+        public int TimeServedInMonths { get; set; }
     }
 }

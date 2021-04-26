@@ -1,6 +1,6 @@
-﻿using Data.Services;
-using Data.Services.Interfaces;
-using Database.Models;
+﻿using Database.Models;
+using Database.Services;
+using Database.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +22,7 @@ namespace Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSerilogRequestLogging();
-            
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
@@ -31,10 +31,7 @@ namespace Api
             });
 
             app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
 
         public void ConfigureServices(IServiceCollection services)

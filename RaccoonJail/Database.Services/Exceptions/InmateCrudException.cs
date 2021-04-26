@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Data.Services.Exceptions
+namespace Database.Services.Exceptions
 {
     public class InmateCrudException : Exception
     {
