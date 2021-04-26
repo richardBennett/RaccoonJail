@@ -6,6 +6,9 @@
 * Deploy Database Project using (double clicking) Database/localhost.publish.xml
 * Build and run API
 
+* Has Swagger, default access is localhost:5000
+* Postman collection included 
+
 ----------------------
 ### Layers
 * Database
@@ -26,7 +29,3 @@
     * MVC
     * Can deploy as Windows Service
     * Simple CRUD endpoints
-
-
-
-
