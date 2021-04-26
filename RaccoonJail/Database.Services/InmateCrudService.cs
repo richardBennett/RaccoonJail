@@ -41,11 +41,6 @@ namespace Database.Services
         {
             var inmate = await GetInmate(inmateId);
 
-            if (inmate == null)
-            {
-                throw new InmateCrudException($"Inmate with Id {inmateId} could not be deleted because it was not found.");
-            }
-
             _dbContext.Remove(inmate);
             await _dbContext.SaveChangesAsync();
         }
@@ -61,7 +56,7 @@ namespace Database.Services
 
             if (inmate == null)
             {
-                throw new InmateCrudException($"Inmate with Id {inmateId} could not be read because it was not found.");
+                throw new InmateNotFoundException(inmateId);
             }
 
             return new InmateDto
@@ -93,9 +88,16 @@ namespace Database.Services
 
         private async Task<Inmate> GetInmate(long inmateId)
         {
-            return await _dbContext.Inmates
+            var inmate = await _dbContext.Inmates
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == inmateId);
+
+            if (inmate == null)
+            {
+                throw new InmateNotFoundException(inmateId);
+            }
+
+            return inmate;
         }
     }
 }

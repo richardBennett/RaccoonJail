@@ -20,7 +20,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/api/InmateCrud/AddInmate?name=Dan Fields&size=200.0&arrestLocation=1&hungerLevel=1&happinessLevel=1",
+					"raw": "https://localhost:5001/api/InmateCrud/AddInmate?name=Reid Mewborne&size=200.0&arrestLocation=1&hungerLevel=1&happinessLevel=2",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -34,7 +34,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Dan Fields"
+							"value": "Reid Mewborne"
 						},
 						{
 							"key": "size",
@@ -50,7 +50,7 @@
 						},
 						{
 							"key": "happinessLevel",
-							"value": "1"
+							"value": "2"
 						}
 					]
 				}
