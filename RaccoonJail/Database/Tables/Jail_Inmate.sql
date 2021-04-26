@@ -2,8 +2,8 @@
 (
 	[Id] BIGINT NOT NULL IDENTITY(1,1), 
     [Name] NCHAR(100) NOT NULL, 
-    [Size] DECIMAL(9, 6) NOT NULL,
-    [TimeServed] INT NOT NULL,
+    [SizeInOz] DECIMAL(9, 6) NOT NULL,
+    [TimeServedInMonths] INT NOT NULL,
     [ArrestLocationId] INT NOT NULL,
     [HappinessLevelId] INT NOT NULL, 
     [HungerLevelId] INT NOT NULL,

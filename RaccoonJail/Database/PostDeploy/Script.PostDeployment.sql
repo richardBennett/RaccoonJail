@@ -13,3 +13,4 @@ Post-Deployment Script Template
 :r .\PopulateInfoArrestLocation.sql
 :r .\PopulateInfoHappinessLevel.sql
 :r .\PopulateInfoHungerLevel.sql
+:r .\AddDefaultInmates.sql

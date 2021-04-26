@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="2abed407-2202-431a-bba7-3a6c1637757e" ChangeDateTime="04/26/2021 13:23:21">
+    <Property Name="ElementName" Value="[Jail].[Inmate].[Size]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Jail].[Inmate]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SizeInOz" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3a7f15eb-7fb3-4c84-a8ed-4734fa1a4fc9" ChangeDateTime="04/26/2021 13:23:26">
+    <Property Name="ElementName" Value="[Jail].[Inmate].[TimeServed]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Jail].[Inmate]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TimeServedInMonth" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="955668b3-10b6-49b9-a6e8-15e501643d00" ChangeDateTime="04/26/2021 13:23:31">
+    <Property Name="ElementName" Value="[Jail].[Inmate].[TimeServedInMonth]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Jail].[Inmate]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TimeServedInMonths" />
+  </Operation>
+</Operations>

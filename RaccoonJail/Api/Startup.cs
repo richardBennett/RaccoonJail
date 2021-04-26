@@ -22,6 +22,14 @@ namespace Api
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSerilogRequestLogging();
+            
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Raccoon Jail Api");
+                c.RoutePrefix = string.Empty;
+            });
+
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
@@ -34,6 +42,8 @@ namespace Api
             services.AddDbContext<RaccoonJailContext>(
                 options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]),
                 ServiceLifetime.Transient);
+
+            services.AddSwaggerGen();
 
             services.AddScoped<IInmateCrudService, InmateCrudService>();
 
