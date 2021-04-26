@@ -1,4 +1,6 @@
-﻿INSERT INTO [Jail].[Inmate]
+﻿TRUNCATE TABLE [Jail].[Inmate]
+
+INSERT INTO [Jail].[Inmate]
 SELECT NewInmates.[Name], NewInmates.[SizeInOz], NewInmates.[TimeServedInMonths], NewInmates.[ArrestLocationId], NewInmates.[HappinessLevelId], NewInmates.[HungerLevelId]
 FROM (
 	VALUES 
