@@ -43,8 +43,7 @@ namespace Database.Models
 
                 entity.Property(e => e.Location)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .IsFixedLength(true);
+                    .HasMaxLength(100);
             });
 
             modelBuilder.Entity<HappinessLevel>(entity =>
@@ -55,8 +54,7 @@ namespace Database.Models
 
                 entity.Property(e => e.Description)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .IsFixedLength(true);
+                    .HasMaxLength(100);
             });
 
             modelBuilder.Entity<HungerLevel>(entity =>
@@ -67,8 +65,7 @@ namespace Database.Models
 
                 entity.Property(e => e.Description)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .IsFixedLength(true);
+                    .HasMaxLength(100);
             });
 
             modelBuilder.Entity<Inmate>(entity =>
@@ -77,8 +74,7 @@ namespace Database.Models
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(100)
-                    .IsFixedLength(true);
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.SizeInOz).HasColumnType("decimal(9, 6)");
 
