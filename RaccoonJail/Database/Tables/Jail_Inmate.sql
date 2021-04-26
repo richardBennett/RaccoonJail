@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [Jail].[Inmate]
 (
 	[Id] BIGINT NOT NULL IDENTITY(1,1), 
-    [Name] NCHAR(100) NOT NULL, 
+    [Name] NVARCHAR(100) NOT NULL, 
     [SizeInOz] DECIMAL(9, 6) NOT NULL,
     [TimeServedInMonths] INT NOT NULL,
     [ArrestLocationId] INT NOT NULL,
