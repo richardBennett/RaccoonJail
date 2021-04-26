@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{485FD5A6-B9D7-44B0-96BE-5AA19DFB0436}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Models", "Database.Models\Database.Models.csproj", "{39737363-75FF-44ED-BC2F-5136BDF87029}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database.Models", "Database.Models\Database.Models.csproj", "{39737363-75FF-44ED-BC2F-5136BDF87029}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Services", "Database.Services\Data.Services.csproj", "{8A869EB5-B446-4644-AE98-BA3A1B78617D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database.Services", "Database.Services\Database.Services.csproj", "{8A869EB5-B446-4644-AE98-BA3A1B78617D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{51E4F736-65D3-4BC2-8348-81FB07DDCC12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{51E4F736-65D3-4BC2-8348-81FB07DDCC12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{002CFAA1-98AE-4432-AB52-535089305D13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{002CFAA1-98AE-4432-AB52-535089305D13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,11 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Data.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using Models.Dtos;
 using Models.Requests;
-using Newtonsoft.Json;
 
 namespace Api.Controllers
 {
@@ -25,6 +23,13 @@ namespace Api.Controllers
             return await _inmateCrudService.AddInmateAndReturnId(name, size, arrestLocation, hungerLevel, happinessLevel);
         }
 
+        [HttpDelete("DeleteInmate/{inmateId:long}")]
+        public async Task<ActionResult> DeleteInmate(long inmateId)
+        {
+            await _inmateCrudService.DeleteInmate(inmateId);
+            return Ok();
+        }
+
         [HttpGet("GetInmate/{inmateId:long}")]
         public async Task<ActionResult<InmateDto>> GetInmate(long inmateId)
         {
@@ -35,13 +40,6 @@ namespace Api.Controllers
         public async Task<ActionResult> GetInmate([FromBody] InmateUpdateRequest inmateUpdateRequest)
         {
             await _inmateCrudService.UpdateInmate(inmateUpdateRequest);
-            return Ok();
-        }
-
-        [HttpDelete("DeleteInmate/{inmateId:long}")]
-        public async Task<ActionResult> DeleteInmate(long inmateId)
-        {
-            await _inmateCrudService.DeleteInmate(inmateId);
             return Ok();
         }
     }
